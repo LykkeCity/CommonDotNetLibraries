@@ -129,9 +129,9 @@ namespace Common
         /// <param name="sec">5 - truncates to 5 seconds</param>
         public static DateTime RoundToSecond(this DateTime dateTime, int sec)
         {
-            if (sec < 1)
+            if (sec < 1 || sec > 59)
             {
-                throw new ArgumentException($"Should be positive number, but is {sec}", nameof(sec));
+                throw new ArgumentOutOfRangeException(nameof(sec), sec, "Should be number in range 1..59");
             }
 
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second / sec * sec, dateTime.Kind);
@@ -154,9 +154,9 @@ namespace Common
         /// <param name="min">5 - truncates to 5 minutes</param>
         public static DateTime RoundToMinute(this DateTime dateTime, int min)
         {
-            if (min < 1)
+            if (min < 1 || min > 59)
             {
-                throw new ArgumentException($"Should be positive number, but is {min}", nameof(min));
+                throw new ArgumentOutOfRangeException(nameof(min), min, "Should be number in range 1..59");
             }
 
             var part = dateTime.Minute / min;
@@ -181,9 +181,9 @@ namespace Common
         /// <param name="hour">5 - truncates to 5 hours</param>
         public static DateTime RoundToHour(this DateTime dateTime, int hour)
         {
-            if (hour < 1)
+            if (hour < 1 || hour > 23)
             {
-                throw new ArgumentException($"Should be positive number, but is {hour}", nameof(hour));
+                throw new ArgumentOutOfRangeException(nameof(hour), hour, "Should be number in range 1..23");
             }
 
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour / hour * hour, 0, 0, dateTime.Kind);
