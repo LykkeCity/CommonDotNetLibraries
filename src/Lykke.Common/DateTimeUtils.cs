@@ -130,6 +130,11 @@ namespace Common
         /// <returns></returns>
         public static DateTime RoundToSecond(this DateTime dateTime, int sec)
         {
+            if (sec < 1)
+            {
+                throw new ArgumentException($"Should be positive number, but is {sec}", nameof(sec));
+            }
+
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second / sec * sec, dateTime.Kind);
         }
 
@@ -152,6 +157,11 @@ namespace Common
         /// <returns>Округленная дата-время</returns>
         public static DateTime RoundToMinute(this DateTime dateTime, int min)
         {
+            if (min < 1)
+            {
+                throw new ArgumentException($"Should be positive number, but is {min}", nameof(min));
+            }
+
             var part = dateTime.Minute / min;
 
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, part * min, 0, dateTime.Kind);
@@ -176,6 +186,11 @@ namespace Common
         /// <returns>Rounded date</returns>
         public static DateTime RoundToHour(this DateTime dateTime, int hour)
         {
+            if (hour < 1)
+            {
+                throw new ArgumentException($"Should be positive number, but is {hour}", nameof(hour));
+            }
+
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour / hour * hour, 0, 0, dateTime.Kind);
         }
 
