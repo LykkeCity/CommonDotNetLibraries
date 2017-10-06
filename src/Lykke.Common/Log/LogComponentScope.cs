@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Common.Log
 {
-    public class LogComponentScope : ILog
+    internal class LogComponentScope : ILog
     {
         private readonly string _component;
         private readonly ILog _impl;
