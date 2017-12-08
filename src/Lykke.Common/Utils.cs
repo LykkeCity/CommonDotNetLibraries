@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Log;
 using System.Reflection;
+using MoreLinq;
 
 namespace Common
 {
@@ -94,8 +95,8 @@ namespace Common
 
         public static string ByteToHex(byte src)
         {
-            var d2 = (byte) (src*0.0625);
-            src = (byte) (src - d2*16);
+            var d2 = (byte)(src * 0.0625);
+            src = (byte)(src - d2 * 16);
 
             return Hex0[d2] + Hex0[src];
 
@@ -115,18 +116,18 @@ namespace Common
             //// 3. Get the sum of the digits
             int sumOfDigits = creditCardNumber.Where((e) => e >= '0' && e <= '9')
                 .Reverse()
-                .Select((e, i) => ((int) e - 48)*(i%2 == 0 ? 1 : 2))
-                .Sum((e) => e/10 + e%10);
+                .Select((e, i) => ((int)e - 48) * (i % 2 == 0 ? 1 : 2))
+                .Sum((e) => e / 10 + e % 10);
 
 
             //// If the final sum is divisible by 10, then the credit card number
             //   is valid. If it is not divisible by 10, the number is invalid.            
-            return sumOfDigits%10 == 0;
+            return sumOfDigits % 10 == 0;
         }
 
         public static string ToHexString(this ICollection<byte> src)
         {
-            var sb = new StringBuilder(src.Count*2);
+            var sb = new StringBuilder(src.Count * 2);
 
             foreach (var b in src)
                 sb.Append(ByteToHex(b));
@@ -146,16 +147,16 @@ namespace Common
             var d1 = src.Length == 1 ? src[0] : src[1];
 
 
-            return (byte) (Decimal0[d0] + Decimal1[d1]);
+            return (byte)(Decimal0[d0] + Decimal1[d1]);
 
         }
 
         public static byte[] HexToArray(string src)
         {
-            if (src.Length%2 != 0)
+            if (src.Length % 2 != 0)
                 throw new Exception("Дилна строки [" + src + "] не делится нацело на 2");
 
-            var result = new byte[src.Length/2];
+            var result = new byte[src.Length / 2];
             int ri = 0;
 
             for (var i = 0; i < src.Length; i += 2)
@@ -177,7 +178,7 @@ namespace Common
 
         public static T ParseEnum<T>(this string value)
         {
-            return (T) Enum.Parse(typeof(T), value, true);
+            return (T)Enum.Parse(typeof(T), value, true);
         }
 
 
@@ -185,7 +186,7 @@ namespace Common
         {
             try
             {
-                return (T) Enum.Parse(typeof(T), value, true);
+                return (T)Enum.Parse(typeof(T), value, true);
             }
             catch (Exception)
             {
@@ -209,21 +210,21 @@ namespace Common
 
             var words = "";
 
-            if ((number/1000000) > 0)
+            if ((number / 1000000) > 0)
             {
-                words += NumberToWords(number/1000000) + " million ";
+                words += NumberToWords(number / 1000000) + " million ";
                 number %= 1000000;
             }
 
-            if ((number/1000) > 0)
+            if ((number / 1000) > 0)
             {
-                words += NumberToWords(number/1000) + " thousand ";
+                words += NumberToWords(number / 1000) + " thousand ";
                 number %= 1000;
             }
 
-            if ((number/100) > 0)
+            if ((number / 100) > 0)
             {
-                words += NumberToWords(number/100) + " hundred ";
+                words += NumberToWords(number / 100) + " hundred ";
                 number %= 100;
             }
 
@@ -244,9 +245,9 @@ namespace Common
                 words += unitsMap[number];
             else
             {
-                words += tensMap[number/10];
-                if ((number%10) > 0)
-                    words += "-" + unitsMap[number%10];
+                words += tensMap[number / 10];
+                if ((number % 10) > 0)
+                    words += "-" + unitsMap[number % 10];
             }
 
             return words;
@@ -342,9 +343,9 @@ namespace Common
                 return amount;
 
             if (amount < 100)
-                return (int) (amount*0.1);
+                return (int)(amount * 0.1);
 
-            return amount%10;
+            return amount % 10;
 
         }
 
@@ -399,30 +400,30 @@ namespace Common
 
             var sb = new StringBuilder();
 
-            var millions = (int) (amount*0.000001);
+            var millions = (int)(amount * 0.000001);
             {
                 if (millions > 0)
                 {
                     WriteMillionsRu(millions, sb);
-                    amount -= millions*1000000;
+                    amount -= millions * 1000000;
                 }
             }
 
-            var thousants = (int) (amount*0.001);
+            var thousants = (int)(amount * 0.001);
             {
                 if (thousants > 0)
                 {
                     WriteThousantsRu(thousants, sb);
-                    amount -= thousants*1000;
+                    amount -= thousants * 1000;
                 }
             }
 
-            var hundreds = (int) (amount*0.01);
+            var hundreds = (int)(amount * 0.01);
             {
                 if (hundreds > 0)
                 {
                     WriteHoundredsRu(hundreds, sb);
-                    amount -= hundreds*100;
+                    amount -= hundreds * 100;
                 }
             }
 
@@ -436,11 +437,11 @@ namespace Common
             }
             else
             {
-                var tens = (int) (amount*0.1);
+                var tens = (int)(amount * 0.1);
                 if (tens > 0)
                 {
                     WriteTensRu(tens, sb);
-                    amount -= tens*10;
+                    amount -= tens * 10;
                 }
 
                 if (amount > 0)
@@ -508,7 +509,7 @@ namespace Common
         /// <returns>Дата дня недели</returns>
         public static DateTime GetNextDateByDayOfTheWeek(DateTime nowDateTime, DayOfWeek dayOfWeek)
         {
-            var days = (int) dayOfWeek - (int) nowDateTime.DayOfWeek;
+            var days = (int)dayOfWeek - (int)nowDateTime.DayOfWeek;
             if (days < 0)
                 days += 7;
             return nowDateTime.AddDays(days);
@@ -623,55 +624,33 @@ namespace Common
             return result.ToArray();
         }
 
-
+        [Obsolete("Use MoreLinq " + nameof(MoreEnumerable.Batch) + " method")]
         public static IEnumerable<IEnumerable<T>> ToPieces<T>(this IEnumerable<T> src, int countInPicese)
         {
-            var result = new List<T>();
-
-            foreach (var itm in src)
-            {
-                result.Add(itm);
-                if (result.Count >= countInPicese)
-                {
-                    yield return result;
-                    result = new List<T>();
-                }
-            }
-
-            if (result.Count>0)
-                yield return result;
+            return src.Batch(countInPicese);
         }
 
-
+        [Obsolete("Use Enumerable " + nameof(Enumerable.Take) + " method")]
         public static IEnumerable<T> Limit<T>(this IEnumerable<T> src, int limit)
         {
-            var no = 0;
-            foreach (var itm in src)
-            {
-                yield return itm;
-                no++;
-                if (no >= limit)
-                    break;
-            }
+            return src.Take(limit);
         }
 
+        [Obsolete("Use Enumerable " + nameof(Enumerable.Range) + " method")]
         public static IEnumerable<int> GenerateInts(int from, int to)
         {
-            for (var i = from; i <= to; i++)
-                yield return i;
+            return Enumerable.Range(from, to - from);
         }
 
-
+        [Obsolete("Use Dictionary constructor")]
         public static Dictionary<TKey, TValue> CloneDictionary<TKey, TValue>(this Dictionary<TKey, TValue> src)
         {
-            var result = new Dictionary<TKey, TValue>();
-            foreach (var itm in src)
-                result.Add(itm.Key, itm.Value);
+            var result = new Dictionary<TKey, TValue>(src);
             return result;
         }
 
 
-        public static Dictionary<TKey, Dictionary<TKey2, TValue>> CloneDoubleDictionary<TKey,TKey2, TValue>(this Dictionary<TKey, Dictionary<TKey2, TValue>> src)
+        public static Dictionary<TKey, Dictionary<TKey2, TValue>> CloneDoubleDictionary<TKey, TKey2, TValue>(this Dictionary<TKey, Dictionary<TKey2, TValue>> src)
         {
             var result = new Dictionary<TKey, Dictionary<TKey2, TValue>>();
             foreach (var itm1 in src)
@@ -720,7 +699,7 @@ namespace Common
             {typeof(double), typeof(double)},
             {typeof(float), typeof(float)},
 
-        }; 
+        };
 
 
         public static bool IsSimpleType(this Type type)
@@ -776,7 +755,7 @@ namespace Common
             if (src == null)
                 return null;
 
-            return new MemoryStream(src) {Position = 0};
+            return new MemoryStream(src) { Position = 0 };
         }
 
 
@@ -804,61 +783,34 @@ namespace Common
             if (search.Length == 0)
                 return -1;
 
-            for (var i = 0; i < src.Count ; i++)
+            for (var i = 0; i < src.Count; i++)
             {
                 if (src[i] != search[0]) continue;
-                return AreSame(src, search, i) ? i : -1; 
+                return AreSame(src, search, i) ? i : -1;
             }
 
             return -1;
         }
 
 
-
+        [Obsolete("Use MoreLinq " + nameof(MoreEnumerable.Slice) + " extension method")]
         public static IEnumerable<T> CutFrom<T>(this IEnumerable<T> src, int from, int length)
         {
-            var i = 0;
-
-            var indexTo = from + length;
-            
-            foreach (var itm in src)
-            {
-                if (i >= indexTo)
-                    yield break;
-
-                if (i >= from && i < indexTo)
-                    yield return itm;
-
-                i++;
-            }
+            return src.Slice(from, length);
         }
 
+        [Obsolete("Use MoreLinq " + nameof(MoreEnumerable.Batch) + " extension method")]
         public static IEnumerable<IEnumerable<T>> ToChunks<T>(this IEnumerable<T> src, int chunkSize)
         {
-            var chunk = new List<T>();
-
-            foreach (var item in src)
-            {
-                chunk.Add(item);
-
-                if (chunk.Count >= chunkSize)
-                {
-                    yield return chunk.ToArray();
-                    chunk.Clear();
-                }
-
-            }
-
-            if (chunk.Count > 0)
-                yield return chunk;
+            return src.Batch(chunkSize);
         }
 
 
         public static IPEndPoint ParseIpEndPoint(this string src)
         {
             var data = src.Split(':');
-            if (data.Length<2)
-                throw new Exception("Invalid endpoint string: "+src);
+            if (data.Length < 2)
+                throw new Exception("Invalid endpoint string: " + src);
 
 
             return new IPEndPoint(IPAddress.Parse(data[0]), int.Parse(data[1]));
@@ -900,7 +852,7 @@ namespace Common
         public static double Map(this double value, double minFrom, double maxFrom, double minTo, double maxTo)
         {
             if (maxFrom - minFrom <= double.Epsilon)
-                return (maxTo - minTo)*0.5;
+                return (maxTo - minTo) * 0.5;
 
             return minTo + (value - minFrom) * (maxTo - minTo) / (maxFrom - minFrom);
         }
@@ -989,7 +941,7 @@ namespace Common
             if (firstVal < roundingError)
                 return null;
 
-            return (secondVal - firstVal)/firstVal*100;
+            return (secondVal - firstVal) / firstVal * 100;
         }
     }
 
