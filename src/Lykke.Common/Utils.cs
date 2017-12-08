@@ -639,7 +639,7 @@ namespace Common
         [Obsolete("Use Enumerable " + nameof(Enumerable.Range) + " method")]
         public static IEnumerable<int> GenerateInts(int from, int to)
         {
-            return Enumerable.Range(from, to - from);
+            return Enumerable.Range(from, to - from + 1);
         }
 
         [Obsolete("Use Dictionary constructor")]
