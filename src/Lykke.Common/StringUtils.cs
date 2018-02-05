@@ -126,6 +126,10 @@ namespace Common
             if (string.IsNullOrEmpty(email))
                 return false;
 
+            //according to https://tools.ietf.org/html/rfc5321#section-4.5.3.1.3
+            if (email.Length > 256)
+                return false;
+
             email = email.Trim();
 
             var lines = email.Split('@');
