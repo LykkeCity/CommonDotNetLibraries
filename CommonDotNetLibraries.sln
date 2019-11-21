@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lykke.Common", "src\Lykke.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Tests", "tests\Common.Tests\Common.Tests.csproj", "{67F87E5A-FDA9-4439-895E-F7E23F2BF9E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lykke.Common.Redis", "src\Lykke.Common.Redis\Lykke.Common.Redis.csproj", "{376F7C43-7208-46A1-BC92-AB0427C5FDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Redis.Tests", "tests\Common.Redis.Tests\Common.Redis.Tests.csproj", "{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{67F87E5A-FDA9-4439-895E-F7E23F2BF9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67F87E5A-FDA9-4439-895E-F7E23F2BF9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67F87E5A-FDA9-4439-895E-F7E23F2BF9E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{376F7C43-7208-46A1-BC92-AB0427C5FDDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376F7C43-7208-46A1-BC92-AB0427C5FDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376F7C43-7208-46A1-BC92-AB0427C5FDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376F7C43-7208-46A1-BC92-AB0427C5FDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +47,8 @@ Global
 		{9E48D54B-C96D-4B84-A538-E645FA47B6F7} = {0B6615DC-BCC1-4406-A0BB-1C7D6A326882}
 		{5E934B1B-8776-4986-8780-D84778E560F5} = {CF1FEB11-C0EE-4569-90B3-227FB3C4A328}
 		{67F87E5A-FDA9-4439-895E-F7E23F2BF9E6} = {9E48D54B-C96D-4B84-A538-E645FA47B6F7}
+		{376F7C43-7208-46A1-BC92-AB0427C5FDDF} = {CF1FEB11-C0EE-4569-90B3-227FB3C4A328}
+		{DCDB6DF5-EDA2-4D83-A70D-062F182E0E45} = {9E48D54B-C96D-4B84-A538-E645FA47B6F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A11EAA2-5CEF-41EA-94E9-AE82A1EB0085}
