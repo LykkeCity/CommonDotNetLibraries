@@ -562,6 +562,25 @@ namespace Common
             #endregion
         });
 
+        public static readonly IReadOnlyDictionary<string, string> CountryIso2ToNameLinks = CountryIso3ToNameLinks
+            .Select(x => new
+            {
+                Iso2 = Iso3ToIso2(x.Key),
+                Name = x.Value
+            })
+            .Where(x => !string.IsNullOrWhiteSpace(x.Iso2))
+            .ToDictionary(x => x.Iso2, x => x.Name);
+
+        public static readonly IReadOnlyDictionary<string, string> CountryNameToIso3Links = CountryIso3ToNameLinks
+            .ToDictionary(
+                x => x.Value,
+                x => x.Key);
+
+        public static readonly IReadOnlyDictionary<string, string> CountryNameToIso2Links = CountryIso2ToNameLinks
+            .ToDictionary(
+                x => x.Value,
+                x => x.Key);
+
         private static readonly Lazy<IReadOnlyDictionary<string, string>> DictCountryIso2ToIso3Links
             = new Lazy<IReadOnlyDictionary<string, string>>(() =>
             {
@@ -569,7 +588,6 @@ namespace Common
                 return new ReadOnlyDictionary<string, string>(dict);
             });
                 
-
         public static IReadOnlyDictionary<string, string> CountryIso2ToIso3Links => DictCountryIso2ToIso3Links.Value;
 
         public static bool HasIso3(string iso3Id)
@@ -653,8 +671,23 @@ namespace Common
             if (string.IsNullOrEmpty(iso2))
                 return string.Empty;
 
-            return GetCountryNameByIso3(Iso2ToIso3(iso2));
+            return CountryIso2ToNameLinks.TryGetValue(iso2, out var name) ? name : string.Empty;
         }
 
+        public static string GetIso2ByName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return string.Empty;
+
+            return CountryNameToIso2Links.TryGetValue(name, out var iso2) ? iso2 : string.Empty;
+        }
+
+        public static string GetIso3ByName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return string.Empty;
+
+            return CountryNameToIso3Links.TryGetValue(name, out var iso3) ? iso3 : string.Empty;
+        }
     }
 }

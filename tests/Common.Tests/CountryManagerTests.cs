@@ -186,5 +186,48 @@ namespace Common.Tests
             Assert.Equal(expectedCountryName, CountryManager.GetCountryNameByIso2(inputIso2));
         }
 
+        [Fact]
+        public void GetIso2ByName_ValidName()
+        {
+            // Arrange
+            const string name = "Russia";
+            const string expectedIso2 = "RU";
+
+            // Assert
+            Assert.Equal(expectedIso2, CountryManager.GetIso2ByName(name));
+        }
+
+        [Fact]
+        public void GetIso2ByName_InvalidValidName()
+        {
+            // Arrange
+            const string name = "XXX";
+            const string expectedIso2 = "";
+
+            // Assert
+            Assert.Equal(expectedIso2, CountryManager.GetIso2ByName(name));
+        }
+
+        [Fact]
+        public void GetIso3ByName_ValidName()
+        {
+            // Arrange
+            const string name = "Russia";
+            const string expectedIso2 = "RUS";
+
+            // Assert
+            Assert.Equal(expectedIso2, CountryManager.GetIso3ByName(name));
+        }
+
+        [Fact]
+        public void GetIso3ByName_InvalidValidName()
+        {
+            // Arrange
+            const string name = "XXX";
+            const string expectedIso2 = "";
+
+            // Assert
+            Assert.Equal(expectedIso2, CountryManager.GetIso3ByName(name));
+        }
     }
 }
