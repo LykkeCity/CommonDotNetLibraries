@@ -37,7 +37,7 @@
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
     <PackageReference Include="morelinq" Version="2.8.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
