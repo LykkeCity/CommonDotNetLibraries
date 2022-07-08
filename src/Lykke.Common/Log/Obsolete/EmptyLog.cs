@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Lykke.Common.Log;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 
 namespace Common.Log
 {
@@ -27,7 +25,7 @@ namespace Common.Log
 
         IDisposable ILog.BeginScope(string scopeMessage)
         {
-            return NullScope.Instance;
+            throw new NotImplementedException();
         }
 
         #region Obsolete methods

@@ -1,58 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>Lykke.Common</AssemblyName>
-    <PackageId>Lykke.Common</PackageId>
-    <PackageTags>Lykke Common</PackageTags>
-    <PackageProjectUrl>https://github.com/LykkeCity/CommonDotNetLibraries</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/LykkeCity/CommonDotNetLibraries/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageId>LykkeBiz.Common</PackageId>
+    <PackageTags>Lykke Business Common</PackageTags>
+    <PackageProjectUrl>https://github.com/LykkeBusinessPlatform/CommonDotNetLibraries</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/LykkeBusinessPlatform/CommonDotNetLibraries/blob/master/LICENSE</PackageLicenseUrl>
     <Version>1.0.1</Version>
-    <Authors>Lykke</Authors>
-    <Description>Lykke common tools and utilities</Description>
+    <Authors>Lykke Business</Authors>
+    <Description>Lykke Business common tools and utilities</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2017 (c) Lykke Corp. All rights reserved.</Copyright>
+    <Copyright>Copyright 2022 (c) Lykke Business. All rights reserved.</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NeutralLanguage>en-001</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Lykke.Common.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\Lykke.Common.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AsyncFriendlyStackTrace" Version="1.5.0" />
-    <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
+    <PackageReference Include="AsyncFriendlyStackTrace" Version="1.6.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
     <PackageReference Include="libphonenumbers-dotnet" Version="1.1.0" />
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.5.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
-    <PackageReference Include="morelinq" Version="2.8.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.20.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.1" />
-    <PackageReference Include="Autofac" Version="4.6.1" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+    <PackageReference Include="Autofac" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup Label="dotnet pack instructions">
+  <ItemGroup Label="dotnet pack instructions" Condition="$(TargetFramework) == 'netstandard2.0'">
     <Content Include="$(OutputPath)$(AssemblyName).pdb">
       <Pack>true</Pack>
       <PackagePath>lib/netstandard2.0</PackagePath>
     </Content>
   </ItemGroup>
-
+  <ItemGroup Label="dotnet pack instructions" Condition="$(TargetFramework) == 'netstandard2.1'">
+    <Content Include="$(OutputPath)$(AssemblyName).pdb">
+      <Pack>true</Pack>
+      <PackagePath>lib/netstandard2.1</PackagePath>
+    </Content>
+  </ItemGroup>
+  
 </Project>
