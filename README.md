@@ -1,4 +1,4 @@
 # CommonDotNetLibraries
 
 
-Nuget https://www.nuget.org/packages/Lykke.Common/
+Nuget https://www.nuget.org/packages/LykkeBiz.Common/
