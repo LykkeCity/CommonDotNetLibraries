@@ -11,8 +11,6 @@ namespace Common.Tests.UtilsClass
         [InlineData(0, 10)]
         [InlineData(0, 0)]
         [InlineData(10, 10)]
-        [InlineData(10, 10)]
-        [InlineData(10, 10)]
         public void GenerateIntsTest(int from, int to)
         {
             var seq = Utils.GenerateInts(from, to);
