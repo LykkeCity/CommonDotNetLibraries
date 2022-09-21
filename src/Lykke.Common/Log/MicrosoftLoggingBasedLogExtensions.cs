@@ -684,7 +684,7 @@ namespace Lykke.Common.Log
                 new LogEntryParameters(
                     AppEnvironment.Name,
                     AppEnvironment.Version,
-                    AppEnvironment.EnvInfo ?? "?",
+                    string.IsNullOrWhiteSpace(AppEnvironment.EnvInfo) ? "?" : AppEnvironment.EnvInfo,
                     callerFilePath,
                     process,
                     callerLineNumber,

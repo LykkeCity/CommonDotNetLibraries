@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Lykke.Common</AssemblyName>
     <PackageId>LykkeBiz.Common</PackageId>
     <PackageTags>Lykke Business Common</PackageTags>
@@ -47,11 +47,4 @@
       <PackagePath>lib/netstandard2.0</PackagePath>
     </Content>
   </ItemGroup>
-  <ItemGroup Label="dotnet pack instructions" Condition="$(TargetFramework) == 'netstandard2.1'">
-    <Content Include="$(OutputPath)$(AssemblyName).pdb">
-      <Pack>true</Pack>
-      <PackagePath>lib/netstandard2.1</PackagePath>
-    </Content>
-  </ItemGroup>
-  
 </Project>
