@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>LykkeBiz.Common.Tests</AssemblyName>
-    <Version>8.1.1</Version>
+    <Version>8.1.2</Version>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

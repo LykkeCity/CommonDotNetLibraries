@@ -7,7 +7,7 @@
     <PackageTags>Lykke Business Common</PackageTags>
     <PackageProjectUrl>https://github.com/LykkeBusinessPlatform/CommonDotNetLibraries</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/LykkeBusinessPlatform/CommonDotNetLibraries/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>8.1.1</Version>
+    <Version>8.1.2</Version>
     <Authors>Lykke Business</Authors>
     <Description>Lykke Business common tools and utilities</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
