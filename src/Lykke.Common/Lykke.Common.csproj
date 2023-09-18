@@ -12,7 +12,6 @@
     <Description>Lykke Business common tools and utilities</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2022 (c) Lykke Business. All rights reserved.</Copyright>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NeutralLanguage>en-001</NeutralLanguage>
   </PropertyGroup>
 
