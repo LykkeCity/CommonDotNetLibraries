@@ -2,6 +2,7 @@
 using System.Globalization;
 using AsyncFriendlyStackTrace;
 using JetBrains.Annotations;
+using Lykke.Common.Log.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -31,6 +32,9 @@ namespace Lykke.Common.Log
                     new IsoDateTimeConverter()
                 }
             };
+            
+            SerializerSettings.Converters.Add(new IPAddressConverter());
+            SerializerSettings.Converters.Add(new IPEndPointConverter());
         }
 
         /// <summary>
